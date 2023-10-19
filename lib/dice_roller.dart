@@ -16,13 +16,14 @@ class DiceRoller extends StatefulWidget {
 class _DiceRollerState extends State<DiceRoller> {
 
   var rolledNumber = 1;
+  var randomizer = Random();
 
   // defining functions
   // implement changing dice image algorithm
   void rollDice() {
     //setting new state
     setState(() {
-      rolledNumber = Random().nextInt(6) + 1; // between 1 and 6
+      rolledNumber = randomizer.nextInt(5) + 1; // between 1 and 6
     });
   }
 
@@ -32,7 +33,7 @@ class _DiceRollerState extends State<DiceRoller> {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
-              "Bunco Dice: ",
+              "Bunco Dice ",
               style: TextStyle(
                 fontSize: 30,
                 color: Colors.white,
