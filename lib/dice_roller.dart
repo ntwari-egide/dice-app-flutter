@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class DiceRoller extends StatefulWidget {
@@ -15,20 +17,25 @@ class DiceRoller extends StatefulWidget {
 class _DiceRollerState extends State<DiceRoller> {
 
   var activeImage = 'assets/images/dice-3.png';
+  var isRolled = false;
 
   // defining functions
   // implement changing dice image algorithm
   void rollDice() {
-    activeImage = 'assets/images/dice-4.png';
+    //setting new state
+    setState(() {
+      activeImage = 'assets/images/dice-4.png';
+      isRolled = true;
+    });
   }
-  
+
   @override
   Widget build( context) {
     return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             const Text(
-              "Bunco Dice",
+              "Bunco Dice: ",
               style: TextStyle(
                 fontSize: 30,
                 color: Colors.white,
