@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class DiceRoller extends StatefulWidget {
@@ -16,16 +15,14 @@ class DiceRoller extends StatefulWidget {
 
 class _DiceRollerState extends State<DiceRoller> {
 
-  var activeImage = 'assets/images/dice-3.png';
-  var isRolled = false;
+  var rolledNumber = 1;
 
   // defining functions
   // implement changing dice image algorithm
   void rollDice() {
     //setting new state
     setState(() {
-      activeImage = 'assets/images/dice-4.png';
-      isRolled = true;
+      rolledNumber = Random().nextInt(6) + 1; // between 1 and 6
     });
   }
 
@@ -42,7 +39,7 @@ class _DiceRollerState extends State<DiceRoller> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Image.asset(activeImage),
+            Image.asset('assets/images/dice-$rolledNumber.png',),
             TextButton(
               onPressed: rollDice,
               style: TextButton.styleFrom(
