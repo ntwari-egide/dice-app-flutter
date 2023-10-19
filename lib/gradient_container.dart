@@ -1,5 +1,4 @@
 // custom widget
-import 'package:app/styled_text.dart';
 import 'package:flutter/material.dart';
 
 // defininga variables
@@ -10,14 +9,19 @@ const endAlignment = Alignment.bottomRight;
 class GradientContainer extends StatelessWidget {
   // defining the constructor
   // passing props
-  const GradientContainer(this.color1, this.color2, {super.key});
+  GradientContainer(this.color1, this.color2, {super.key});
 
   final Color color1;
   final Color color2;
 
-  // defining functions
+  var activeImage = 'assets/images/dice-3.png';
 
-  void rollDice() {}
+  // defining functions
+  // implement changing dice image algorithm
+  void rollDice() {
+    activeImage = 'assets/images/dice-4.png';
+    print('changing dice...');
+  }
 
   @override
   Widget build(context) {
@@ -36,11 +40,24 @@ class GradientContainer extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset('assets/images/dice-1.png'),
+            const Text(
+              "Bunco Dice",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Image.asset(activeImage),
             TextButton(
               onPressed: rollDice,
               style: TextButton.styleFrom(
-                  padding: const EdgeInsets.only(left: 32, right: 32, top: 20, bottom: 20, ),
+                  padding: const EdgeInsets.only(
+                    left: 32,
+                    right: 32,
+                    top: 20,
+                    bottom: 20,
+                  ),
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
                   textStyle: const TextStyle(
